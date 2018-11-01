@@ -1,9 +1,9 @@
-//create a variable to hold one ball
-let b;
-var value = 0;
-var monkey1, door, monkey2;
+//create a variable to have the images and values for the motion
+let b; /variable of the object
+var value = 0; //value of moving
+var monkey1, door, monkey2; //images
 
-function preload(){
+function preload(){ //load all the images before anything else
   monkey1 = loadImage('assets/monkey1.png');
   door = loadImage('assets/door.png');
   monkey2 = loadImage('assets/monkey2.png');
@@ -11,40 +11,33 @@ function preload(){
 
 function setup() {
   createCanvas(800, 400);
-  b = new Ball(400, 200); //make a new ball from the Ball class and call it b.
+  b = new Ball(400, 200); 
   imageMode (CENTER);
-
+// sets all the canvas size and color and sets the image center to be the coordinate choice
 }
 
 
 function draw(){
 	background(220);
-    b.drawBall(); //draw the ball called b (go look in the Ball class for the drawBall function)
-    b.moveBall(); //move the ball called b (go look in the Ball class for the moveBall function)
+    b.drawMonkey(); //draw the monkey
+    b.moveMonkey(); //move the monkey code
     scale(1/4);
-    image(door,200,300);
+    image(door,200,300); //for later use but objective is to get monkey to class which is the door
 }
-
-
-function keyPressed() {
-
-  }
-
-
-//ball class from which to create new balls with similar properties.
+//Monkey class to set all the properties it has
 class Ball {
 
-	constructor(x,y){ //every ball needs an x value and a y value
+	constructor(x,y){
 		    this.x = x;
     		this.y = y;
 	}
-	drawBall(){  // draw a ball on the screen at x,y
+	drawMonkey(){  // loads the monkey image
     		image(monkey1,this.x,this.y,100,100);
 	}
 
 
- moveBall(){ //update the location of the ball, so it moves across the screen
-   if (keyIsDown(LEFT_ARROW)) {
+ moveMonkey(){ //sets the motion of the monkey
+   if (keyIsDown(LEFT_ARROW)) {//sets the key when holding down it will move to the left 
      this.x = this.x-2.5;
      print("left");
    } else if (keyIsDown(RIGHT_ARROW)) {
